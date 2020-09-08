@@ -20,12 +20,12 @@ from django.urls import path
 #     path('admin/', admin.site.urls),
 # ]
 from django.conf.urls import url
-from . import views
+from . import views,testdb
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', views.hello),
     path('indexs/', views.runoob),
-    # url(r'^$', views.hello),
+    url(r'^$', views.hello),
+    path('testdb/', testdb.testdb),
 ]
 # 相当于路由 定义的两种方式 一个用path  一个用url
