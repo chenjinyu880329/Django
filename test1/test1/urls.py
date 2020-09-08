@@ -16,6 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+# ]
+from django.conf.urls import url
+from . import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('/', views.hello),
+    path('indexs/', views.runoob),
+    # url(r'^$', views.hello),
 ]
+# 相当于路由 定义的两种方式 一个用path  一个用url
