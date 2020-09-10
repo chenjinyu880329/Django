@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TestModel',               # 添加此项
+    'Book',               # 添加此项
 ]
 
 MIDDLEWARE = [
