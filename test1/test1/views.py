@@ -4,6 +4,15 @@ from django.shortcuts import render
 
 from . import testdb
 
+
+
+
+def admins(request):
+
+
+    return HttpResponse("<p>" + b.name + "！</p>")
+
+
 def bookdbs(request):
     context = testdb.bookdb()
     data = {'list': context}

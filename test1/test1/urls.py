@@ -29,5 +29,6 @@ urlpatterns = [
     path('testdb/', testdb.testdb),
     path('books/', views.bookdbs),
 
+    url(r'guanliqi/', views.admins)
 ]
 # 相当于路由 定义的两种方式 一个用path  一个用url
