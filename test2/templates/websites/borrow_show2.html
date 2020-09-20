@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+</head>
+<style>
+    #page-normal{
+	color:#ff9655;
+	text-align:center;
+	font-size:0px;
+}
+
+#page-normal a{
+	border:1px solid #ff9600;
+	padding:5px 7px;
+	color:#ff9655;
+	text-decoration:none;
+	font-size:15px;
+	margin-right:10px;
+}
+
+#page-normal a:hover{
+	border:1px solid #ff9600;
+	padding:5px 7px;
+	background-color:#ffbe94;
+}
+
+#page-prev{
+	border:1px solid #ff9600;
+	color:#ff9600;
+	padding:5px 7px;
+	font-size:15px;
+	margin-right:10px;
+	}
+
+.page-prevs{
+	border:1px solid #ff9600;
+	color:#ff9600;
+	padding:5px 7px;
+	font-size:15px;
+	margin-right:10px;
+	}
+
+#page-prev i{
+	margin-right:5px;
+	}
+
+#page-next i{
+	margin-left:5px;
+	}
+
+#page-current{
+	border:1px solid #ff9600;
+	padding:5px 7px;
+	background-color:#ffbe94;
+	font-size:15px;
+	margin-right:10px;
+}
+
+#page-ellipsis{
+	font-size:15px;
+	margin-right:10px;
+}
+</style>
+<body>
+
+
+
+
+
+<ul>
+    {% for hero in page %}
+        <li>{{ hero.id }}</li>
+    {% endfor %}
+</ul>
+
+<!--<hr>-->
+<!--{% for index in page.paginator.page_range %}-->
+<!--    {% if index == page.number %}-->
+<!--{{ index }}-->
+<!--    {% else %}-->
+<!--<a href="/web/herolist/{{ index }}">{{ index }}</a>-->
+<!--    {% endif %}-->
+<!--{% endfor %}-->
+
+
+<div id="page-normal">
+
+    {% if page.has_previous %}
+    <a class="page-prevs" href="/web/herolist2?pindex=1"><i></i>首页({{ numbers }})</a>
+    <a id="page-prev" href="/web/herolist2?pindex={{ page.previous_page_number }}"><i></i>上一页</a>
+    {% else %}
+    <span class="page-prevs"><i></i>首页({{ numbers }})</span>
+    <span id="page-prev"><i></i>上一页</span>
+    {% endif %}
+    {% for index in page.paginator.page_range %}
+
+            {% if index == page.number %}
+            <span id="page-current">{{ index }}({{ page.number|add:-4 }})</span>
+            {% else %}
+                {% if index > page.number|add:-4  and index < page.number|add:4 %}
+                    <a href="/web/herolist2?pindex={{ index }}">{{ index }}</a>
+                {% endif %}
+
+            {% endif %}
+
+    {% endfor %}
+
+
+    {% if page.has_next %}
+    <a id="page-next" href="/web/herolist2?pindex={{ page.next_page_number }}">下一页<i></i></a>
+
+    <a class="page-prevs" href="javascript:"><i></i>共{{ numbers }} 页</a>
+
+ <form action="/web/herolist2" method="get" style="float:right;">
+    <span class="page-prevs" href="javascript:">
+        <i></i>要到达 <input type="text" style="width: 30px;" value="{{ page.number }}" name="pindex"> 页
+    </span>
+        <span class="page-prevs" href="javascript:"><input type="submit" value="确定"></span>
+    </form>
+
+
+ <span class="page-prevs" href="javascript:">
+        <i></i>要到达 <input type="text" style="width: 30px;" value="{{ page.number }}"> 页
+    </span>
+        <span class="page-prevs" ><input type="submit" value="确定"></span>
+
+
+
+    <a class="page-prevs" href="/web/herolist2?pindex={{ numbers }}"><i></i>尾页</a>
+    {% else %}
+
+    <a class="page-prevs" href="javascript:"><i></i>下一页</a>
+    <a class="page-prevs" href="javascript:"><i></i>共{{ numbers }} 页</a>
+
+    <span class="page-prevs" href="javascript:"><i></i>要到达 <input type="text" style="width: 30px;" value="{{ page.number }}"> 页</span>
+
+
+    <a class="page-prevs" href="javascript:"><i></i>尾页</a>
+    {% endif %}
+
+</div>
+
+
+
+
+</body>
+</html>

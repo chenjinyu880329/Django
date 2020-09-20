@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chenjinyu</title>
+</head>
+<body>
+chenjinyu
+<h1>{{ get2.chen }} -- {{ get2.jin }} -- {{ get2.yu }}</h1>
+
+
+<h1>{{ get1.0.chen }} -- {{ get1.0.jin }} -- {{ get1.0.yu }}</h1>
+
+{% for gets in get1 %}
+<h1>{{ gets.chen }} -- {{ gets.jin }} -- {{ gets.yu }}</h1>
+{% endfor %}
+
+<ul>
+{% for book in list1 %}
+<li>{{ book.id }} -- {{ book.chen }}--{{ book.jin }}--{{ book.yu }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>

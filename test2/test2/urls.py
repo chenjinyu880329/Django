@@ -18,8 +18,10 @@ from django.urls import path
 from django.conf.urls import url,include
 from . import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.index),
-    url(r'^web/', include('website.urls')),
+    # url(r'^web/', include(('website.urls', 'website'), namespace='website')), # namespace 反向解析使用
+    url(r'^web/', include('website.urls', namespace='website')),
 ]

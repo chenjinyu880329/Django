@@ -143,14 +143,29 @@ class WebsiteCeshi(models.Model):
         db_table = 'website_ceshi'
 
 
+#############################
+# 管理器
+
+
+class WebsiteChenjinyuManager(models.Manager):
+    def get_queryset(self):  # 自定义管理师 有过滤作用
+        return super(WebsiteChenjinyuManager, self).get_queryset().filter(status=True)
+
+
 class WebsiteChenjinyu(models.Model):
     chen = models.CharField(max_length=50)
     jin = models.TextField()
     yu = models.IntegerField()
+    status = models.IntegerField()
 
     class Meta:
         managed = False
         db_table = 'website_chenjinyu'
+    # 两种方式
+    books1 = models.Manager()
+    books2 = WebsiteChenjinyuManager()
+
+#############################
 
 
 class WebsiteHeroinfo(models.Model):
